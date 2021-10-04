@@ -1,0 +1,41 @@
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Person App</title>
+  </head>
+
+  <body>
+    <div id="app" >
+      {{ mesaj }}
+
+      <input type="text" v-model="userComment" v-on:keyup.enter="addComment" />
+      <button v-if="userComment.length>0" @click="addComment">Ekle</button>
+        <ul>
+            <li v-for="i in userComments">
+                {{i}}
+
+            </li>
+        </ul>
+    </div>
+    <script>
+      var App = new Vue({
+          el: "#app",
+          data: {
+              mesaj: "Merhaba Vue",
+              userComment:"",
+              userComments:[
+                  'Vue',
+                  'Love',
+                  'like'
+              ]
+          },
+          methods:{
+              addComment:function(){
+                  this.userComments.push(this.userComment)
+              }
+          }
+      });
+    </script>
+  </body>
+</html>
